@@ -24,3 +24,9 @@ void listg_dump (S_LIST* LIST);
 
 char* read_buffer(FILE* text);
 S_LIST* make_list(S_LIST* LIST, char* buffer);
+
+void make_table(S_LIST* LIST);
+
+size_t hash_zero(char* word);
+size_t hash_first(char* word);
+size_t hash_word(char* word);

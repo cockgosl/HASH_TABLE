@@ -5,7 +5,8 @@ int main() {
     FILE* fp = fopen("txt/Pride_and_Prejustice.txt", "r");
     char* buffer = read_buffer(fp);
     make_list(&LIST, buffer);
-    list_dump(&LIST);
+    make_table(&LIST);
+    listg_dump(&LIST);
     list_destroy(&LIST);
     free (buffer);
 }
