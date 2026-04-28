@@ -10,7 +10,7 @@ BUILD = build
 OBJ = build/list_func.o build/read_buffer.o build/hash.o build/make_list.o
 TARGET = bin/test
 
-DUMP_INF = DUMP_inf/g.gv DUMP_inf/g.jpg
+DUMP_INF = DUMP_inf/g.gv DUMP_inf/g.jpg DUMP_inf/graph.png
 
 $(TARGET) : $(OBJ)
 	$(CC) $(FLAGS_C) $(OBJ) -o $(TARGET)
@@ -21,4 +21,4 @@ $(BUILD)/%.o : $(SRC)/%.cpp
 graph:
 	dot $(FLAGS_G) $(INPUT) > $(OUTPUT)
 clean:
-	rm -f $(OBJ) $(TARGET) $(DUMP_INF)
+	rm -f $(OBJ) $(TARGET) $(DUMP_INF) 

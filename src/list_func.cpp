@@ -6,7 +6,6 @@ int main() {
     char* buffer = read_buffer(fp);
     make_list(&LIST, buffer);
     make_table(&LIST);
-    listg_dump(&LIST);
     list_destroy(&LIST);
     free (buffer);
 }
