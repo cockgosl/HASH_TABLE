@@ -26,8 +26,8 @@ void listg_dump (S_LIST* LIST);
 char* read_buffer(FILE* text);
 S_LIST* make_list(S_LIST* LIST, char* buffer);
 
-void make_table(S_LIST* LIST);
-void table_destroy();
+void make_table(S_LIST* LIST, S_LIST* hash_table);
+void table_destroy(S_LIST* hash_table);
 
 size_t hash_zero(char* word);
 size_t hash_first(char* word);

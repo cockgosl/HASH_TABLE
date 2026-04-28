@@ -1,12 +1,14 @@
 #include "hash_table.h"
 
 int main() {
+    S_LIST* hash_table = (S_LIST*) calloc (4000, sizeof(S_LIST));
     S_LIST LIST = {};
     FILE* fp = fopen("txt/Pride_and_Prejustice.txt", "r");
     char* buffer = read_buffer(fp);
     make_list(&LIST, buffer);
-    make_table(&LIST);
-    table_destroy ();
+    make_table(&LIST, hash_table);
+    table_destroy (hash_table);
+    free (hash_table);
     list_destroy(&LIST);
     free (buffer);
 }
@@ -21,6 +23,7 @@ int main() {
 
 void list_init (S_LIST* LIST, size_t size) {
     if (LIST) {
+        LIST->free = 1;
         LIST->data = (type*)calloc (size + 1, sizeof (type));           /*size+1 - because the first cell in every */
         LIST->next = (size_t*)calloc (size + 1, sizeof (size_t));       /*array is a service cell                  */
         LIST->prev = (size_t*)calloc (size + 1, sizeof (size_t));

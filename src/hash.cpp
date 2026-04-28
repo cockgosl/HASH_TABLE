@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include "hash_table.h"
 
-S_LIST hash_table[4000] = {};
-
-void make_table(S_LIST* LIST) {
+void make_table(S_LIST* LIST, S_LIST* hash_table) {
     size_t max = 0;
     char* word = NULL;
     FILE* fp = fopen("csv/data.csv", "wr");
@@ -28,11 +26,11 @@ void make_table(S_LIST* LIST) {
     }
 }
 
-void table_destroy(void) {
+void table_destroy(S_LIST* hash_table) {
     for (size_t ind = 0; ind < 4000; ind++) {
-        S_LIST* list = &hash_table[ind];
-        if (list->size != 0) {
-            list_destroy(list);
+        S_LIST list = hash_table[ind];
+        if (list.size != 0) {
+            list_destroy(&list);
         }
     }
 }
