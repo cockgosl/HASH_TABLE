@@ -15,6 +15,7 @@ struct S_LIST {
     size_t amount = 0;                                          //the amount of not service data
 };
 
+
 void list_init (S_LIST* LIST, size_t size);
 void list_destroy (S_LIST* LIST);
 void list_insert (S_LIST* LIST, size_t anchor, type value);
@@ -26,6 +27,7 @@ char* read_buffer(FILE* text);
 S_LIST* make_list(S_LIST* LIST, char* buffer);
 
 void make_table(S_LIST* LIST);
+void table_destroy();
 
 size_t hash_zero(char* word);
 size_t hash_first(char* word);
