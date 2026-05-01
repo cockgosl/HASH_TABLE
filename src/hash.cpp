@@ -1,38 +1,50 @@
 #include <stdio.h>
 #include "hash_table.h"
 
-void make_table(S_LIST* LIST, S_LIST* hash_table) {
-    size_t max = 0;
-    char* word = NULL;
-    FILE* fp = fopen("csv/data.csv", "wr");
-    for (size_t ind = LIST->next[0]; ind != 0; ind = LIST->next[ind]) {
-        word = LIST->data[ind];
-        size_t hash = hash_word(word);
-        if (hash > max) {
-            max = hash;
+void make_table(table_t* hash_table, char* buffer, size_t number) {
+
+    char* pointer = buffer;  
+
+    for (size_t counter = 0; counter < number ; counter++) {
+        size_t flag = 0;
+        size_t hash = hash_word(pointer);
+        if (hash > hash_table->size) {
+            hash = hash % hash_table->size;
         }
-        if (hash < 4000) {
-            if (hash_table[hash].size == 0) {
-                list_init(&hash_table[hash], 4000);
+
+        for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
+            if (strcmp(pointer, ind->data) == 0) {
+                flag = 1;
+                break;
             }
-            list_insert(&hash_table[hash], 0, word);
         }
+        if (flag == 0) { 
+            list_insert(&(hash_table->table[hash]), pointer);
+        }
+        pointer = strchr (pointer, '\0') + 1;
     }
-    if (max > 4000) {
-        max = 4000;
-    }
-    for (size_t ind = 0; ind < max; ind++) {
-        fprintf (fp, "%ld %ld\n", ind, hash_table[ind].amount);
+
+}
+
+void table_dump(table_t* hash_table, FILE* output) {
+    for (size_t ind = 0; ind < hash_table->size; ind++) {
+        fprintf (output, "%ld %ld\n", ind, hash_table->table[ind].amount);
     }
 }
 
-void table_destroy(S_LIST* hash_table) {
-    for (size_t ind = 0; ind < 4000; ind++) {
-        S_LIST list = hash_table[ind];
-        if (list.size != 0) {
-            list_destroy(&list);
-        }
+void table_init(table_t* table, size_t size) {
+    table->table = (list_t*)calloc (size, sizeof(list_t));
+    table->size = size;
+    for (size_t ind = 0; ind < table->size; ind++) {
+        list_init(&(table->table[ind]), "head");
     }
+}
+
+void table_destroy(table_t* hash_table) {
+    for (size_t ind = 0; ind < hash_table->size; ind++) {
+        list_destroy(&(hash_table->table[ind]));
+    }
+    free (hash_table->table);
 }
 
 

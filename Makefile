@@ -7,7 +7,7 @@ OUTPUT = DUMP_inf/g.jpg
 
 SRC = src
 BUILD = build
-OBJ = build/list_func.o build/read_buffer.o build/hash.o build/make_list.o
+OBJ = build/list_func.o build/read_buffer.o build/hash.o build/main.o
 TARGET = bin/test
 
 DUMP_INF = DUMP_inf/g.gv DUMP_inf/g.jpg DUMP_inf/graph.png

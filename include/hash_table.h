@@ -4,30 +4,36 @@
 #include <assert.h>
 #include <cstring>
 
-typedef char* type;                                            //the lists are on doubles
+typedef char* type;                                            
 
-struct S_LIST { 
-    type* data;                                                 //the array with values of the list
-    size_t* next;                                               //the array, that looks like: next[i] = j <-> next to the element i is element j
-    size_t* prev;                                               //the array, that looks like: prev[i] = j <-> previous to the element is is element j
-    size_t free = 1;                                            //the next cell, in which new data can be contained
-    size_t size = 0;                                            //the real amount of elements in the arrays 
+struct node_t {
+    type data;
+    node_t* next;
+};
+
+struct list_t {
+    node_t* head; 
     size_t amount = 0;                                          //the amount of not service data
 };
 
 
-void list_init (S_LIST* LIST, size_t size);
-void list_destroy (S_LIST* LIST);
-void list_insert (S_LIST* LIST, size_t anchor, type value);
-void list_dump (S_LIST* LIST);
-void list_delete (S_LIST* LIST, size_t anchor);
-void listg_dump (S_LIST* LIST);
+struct table_t {
+    list_t* table;
+    size_t size = 0;
+};
 
-char* read_buffer(FILE* text);
-S_LIST* make_list(S_LIST* LIST, char* buffer);
 
-void make_table(S_LIST* LIST, S_LIST* hash_table);
-void table_destroy(S_LIST* hash_table);
+void list_init (list_t* list, type value);
+void list_destroy (list_t* list);
+void list_insert (list_t* list, type value);
+void list_dump (list_t* list);
+
+char* read_buffer(FILE* text, size_t* amount);
+
+void make_table(table_t* hash_table, char* buffer, size_t number);
+void table_init(table_t* table, size_t size);
+void table_destroy(table_t* hash_table);
+void table_dump(table_t* hash_table, FILE* output);
 
 size_t hash_zero(char* word);
 size_t hash_first(char* word);
