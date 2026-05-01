@@ -4,7 +4,8 @@
 #include <assert.h>
 #include <cstring>
 
-typedef char* type;                                            
+typedef char* type; 
+typedef size_t (*hash_ptr)(char*);                                         
 
 struct node_t {
     type data;
@@ -30,7 +31,7 @@ void list_dump (list_t* list);
 
 char* read_buffer(FILE* text, size_t* amount);
 
-void make_table(table_t* hash_table, char* buffer, size_t number);
+void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func);
 void table_init(table_t* table, size_t size);
 void table_destroy(table_t* hash_table);
 void table_dump(table_t* hash_table, FILE* output);

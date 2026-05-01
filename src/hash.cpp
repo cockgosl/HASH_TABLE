@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include "hash_table.h"
 
-void make_table(table_t* hash_table, char* buffer, size_t number) {
+void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func) {
 
     char* pointer = buffer;  
 
     for (size_t counter = 0; counter < number ; counter++) {
         size_t flag = 0;
-        size_t hash = hash_word(pointer);
+        size_t hash = hash_func(pointer);
         if (hash > hash_table->size) {
             hash = hash % hash_table->size;
         }
@@ -26,6 +26,10 @@ void make_table(table_t* hash_table, char* buffer, size_t number) {
 
 }
 
+int search(table_t* hash_table, char* word) {
+    return 0;
+}
+
 void table_dump(table_t* hash_table, FILE* output) {
     for (size_t ind = 0; ind < hash_table->size; ind++) {
         fprintf (output, "%ld %ld\n", ind, hash_table->table[ind].amount);
@@ -35,8 +39,9 @@ void table_dump(table_t* hash_table, FILE* output) {
 void table_init(table_t* table, size_t size) {
     table->table = (list_t*)calloc (size, sizeof(list_t));
     table->size = size;
+    char* zero = (char*)"zero";
     for (size_t ind = 0; ind < table->size; ind++) {
-        list_init(&(table->table[ind]), "head");
+        list_init(&(table->table[ind]), zero );
     }
 }
 

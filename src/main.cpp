@@ -7,7 +7,7 @@ int main() {
     char* buffer = read_buffer(fp, &amount);
     table_t table = {};
     table_init(&table, 2000);
-    make_table(&table, buffer, amount);
+    make_table(&table, buffer, amount, hash_first);
     table_dump(&table, data);
     table_destroy(&table);
     free(buffer);
