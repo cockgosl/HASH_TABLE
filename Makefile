@@ -21,8 +21,11 @@ $(BUILD)/%.o : $(SRC)/%.cpp
 	mkdir -p build/
 	$(CC) $(FLAGS_C) -c $< -o $@
 
-graph:
+graph_dot:
 	mkdir -p Dump_inf
 	dot $(FLAGS_G) $(INPUT) > $(OUTPUT)
+graph_plot:
+	mkdir -p images
+	gnuplot csv/plot.plt
 clean:
 	rm -f $(OBJ) $(TARGET) $(Dump_inf) $(IMAGES)

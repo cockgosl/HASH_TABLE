@@ -35,14 +35,10 @@ int search(table_t* hash_table, char* word, hash_ptr hash_func) {
     size_t in = 0;
     for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
         if (in && strcmp(ind->data, word) == 0) {
-            printf ("The word is in the %ld'th list, index is %ld\n", hash, in);
-            flag = 1;
+            flag = hash;
             break;
         }
         in++;
-    }
-    if (flag == 0) {
-        printf("there is no such word\n");
     }
     return flag;
 }
