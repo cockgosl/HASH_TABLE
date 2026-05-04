@@ -11,9 +11,9 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
         if (hash > hash_table->size) {
             hash = hash % hash_table->size;
         }
-
+        
         for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
-            if (strcmp(pointer, ind->data) == 0) {
+            if (ind->data && strcmp(pointer, ind->data) == 0) {
                 flag = 1;
                 break;
             }
@@ -26,8 +26,25 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
 
 }
 
-int search(table_t* hash_table, char* word) {
-    return 0;
+int search(table_t* hash_table, char* word, hash_ptr hash_func) {
+    size_t flag = 0;
+    size_t hash = hash_func(word);
+    if (hash >= hash_table->size) {
+        hash = hash % hash_table->size;
+    }
+    size_t in = 0;
+    for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
+        if (in && strcmp(ind->data, word) == 0) {
+            printf ("The word is in the %ld'th list, index is %ld\n", hash, in);
+            flag = 1;
+            break;
+        }
+        in++;
+    }
+    if (flag == 0) {
+        printf("there is no such word\n");
+    }
+    return flag;
 }
 
 void table_dump(table_t* hash_table, FILE* output) {
@@ -39,9 +56,8 @@ void table_dump(table_t* hash_table, FILE* output) {
 void table_init(table_t* table, size_t size) {
     table->table = (list_t*)calloc (size, sizeof(list_t));
     table->size = size;
-    char* zero = (char*)"zero";
     for (size_t ind = 0; ind < table->size; ind++) {
-        list_init(&(table->table[ind]), zero );
+        list_init(&(table->table[ind]), NULL);
     }
 }
 
@@ -64,6 +80,6 @@ size_t hash_first(char* word) {
 size_t hash_word(char* word) {
     size_t sum = 0;
     size_t len = strlen(word);
-    for (size_t ind = 0; ind < len; ind++, sum+=word[ind]);
+    for (size_t ind = 0; ind < len; sum+=word[ind], ind++);
     return sum;
 }

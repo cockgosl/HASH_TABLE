@@ -26,6 +26,7 @@ char* read_buffer(FILE* text, size_t* amount) {
     for (size_t in = 0; buffer[in] != '\0';) {
         if (buffer[in] == '\n' || buffer[in] == ' ' || buffer[in] == '\r') {
             while (buffer[in] == '\n' || buffer[in] == '\r' || buffer[in] == ' ') {
+                buffer[in] = '\0';
                 in++;
             }
             if (buffer[in] == '\0') {

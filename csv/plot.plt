@@ -1,5 +1,5 @@
 set terminal pngcairo size 2400,1800
-set output "Dump_inf/graph.png"
+set output "images/graph.png"
 
 set title "Мой график"
 set xlabel "X"

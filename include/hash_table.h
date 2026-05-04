@@ -35,6 +35,7 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
 void table_init(table_t* table, size_t size);
 void table_destroy(table_t* hash_table);
 void table_dump(table_t* hash_table, FILE* output);
+int search(table_t* hash_table, char* word, hash_ptr hash_func);
 
 size_t hash_zero(char* word);
 size_t hash_first(char* word);

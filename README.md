@@ -11,6 +11,6 @@
 ## План
 
 ## Ход работы
-
+<img src="./images/graph.png" alt="Описание" width="1600" height="800">
 
 ## Выводы
