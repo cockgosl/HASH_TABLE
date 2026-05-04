@@ -1,6 +1,6 @@
 #include "hash_table.h"
 
-void list_init (list_t* list, type value) {
+error_t list_init (list_t* list, type value) {
     if (list) {
         list->head = (node_t*)calloc (1, sizeof(node_t));
         list->head->data = value;
@@ -8,10 +8,12 @@ void list_init (list_t* list, type value) {
     }
     else {
         printf ("something is wrong with the given list");
+        return INCORRECT;
     }
+    return CORRECT;
 }
 
-void list_destroy (list_t* list) {
+error_t list_destroy (list_t* list) {
     if (list) {
         if (list->head != NULL) {
             for (node_t* ind = list->head; ind != NULL;) {
@@ -22,14 +24,17 @@ void list_destroy (list_t* list) {
         }
         else {
             printf ("list wasn't initialized - error");
+            return INCORRECT;
         }
     }
     else {
         printf ("Something is wrong with the given list\n");
+        return INCORRECT;
     }
+    return CORRECT;
 }
 
-void list_insert (list_t* list, type value) {
+error_t list_insert (list_t* list, type value) {
 
     
     if (list) {
@@ -44,22 +49,26 @@ void list_insert (list_t* list, type value) {
     }
     else {
         fprintf (stderr, "Something is wrong with the given list\n");
+        return INCORRECT;
     }
+    return CORRECT;
 }
 
-void list_dump (list_t* list) {
+error_t list_dump (list_t* list) {
     if (list) {
         printf ("amount = %ld\n", list->amount);
 
         printf ("\n");
 
         for (node_t* ind = list->head; ind != NULL ; ind = ind->next) {
-            printf ("element[%p] : %s \n",(void*)ind, ind->data);
+            printf ("element[%p] : %s \n",(error_t*)ind, ind->data);
         }
 
         printf ("\n");
     }
     else {
         printf ("Something is wrong with the given list\n");
+        return INCORRECT;
     }
+    return CORRECT;
 }

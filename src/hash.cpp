@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include "hash_table.h"
 
-void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func) {
-
+error_t make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func) {
+    if (hash_table == NULL || buffer == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     char* pointer = buffer;  
 
     for (size_t counter = 0; counter < number ; counter++) {
@@ -23,10 +26,14 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
         }
         pointer = strchr (pointer, '\0') + 1;
     }
-
+    return CORRECT;
 }
 
 int search(table_t* hash_table, char* word, hash_ptr hash_func) {
+    if (hash_table == NULL || word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     int flag = -1;
     size_t hash = hash_func(word);
     if (hash >= hash_table->size) {
@@ -43,38 +50,68 @@ int search(table_t* hash_table, char* word, hash_ptr hash_func) {
     return flag;
 }
 
-void table_dump(table_t* hash_table, FILE* output) {
+error_t table_dump(table_t* hash_table, FILE* output) {
+    if (hash_table == NULL || output == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     for (size_t ind = 0; ind < hash_table->size; ind++) {
         fprintf (output, "%ld %ld\n", ind, hash_table->table[ind].amount);
     }
+    return CORRECT;
 }
 
-void table_init(table_t* table, size_t size) {
+error_t table_init(table_t* table, size_t size) {
+    if (table == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     table->table = (list_t*)calloc (size, sizeof(list_t));
     table->size = size;
     for (size_t ind = 0; ind < table->size; ind++) {
         list_init(&(table->table[ind]), NULL);
     }
+    return CORRECT;
 }
 
-void table_destroy(table_t* hash_table) {
+error_t table_destroy(table_t* hash_table) {
+    if (hash_table == NULL ) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+    if (hash_table == 0) {
+        return INCORRECT;
+    }
     for (size_t ind = 0; ind < hash_table->size; ind++) {
         list_destroy(&(hash_table->table[ind]));
     }
     free (hash_table->table);
+    return CORRECT;
 }
 
 
 size_t hash_zero(char* word) {
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     word++;
     return 0;
 }
 
 size_t hash_first(char* word) {
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     return word[0];
 }
 
 size_t hash_word(char* word) {
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
     size_t sum = 0;
     size_t len = strlen(word);
     for (size_t ind = 0; ind < len; sum+=word[ind], ind++);
