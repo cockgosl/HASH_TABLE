@@ -48,14 +48,13 @@ void list_insert (list_t* list, type value) {
 }
 
 void list_dump (list_t* list) {
-    size_t temp = 0;
     if (list) {
         printf ("amount = %ld\n", list->amount);
 
         printf ("\n");
 
         for (node_t* ind = list->head; ind != NULL ; ind = ind->next) {
-            printf ("element[%p] : %s \n",ind, ind->data);
+            printf ("element[%p] : %s \n",(void*)ind, ind->data);
         }
 
         printf ("\n");

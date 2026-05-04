@@ -27,7 +27,7 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
 }
 
 int search(table_t* hash_table, char* word, hash_ptr hash_func) {
-    size_t flag = 0;
+    int flag = -1;
     size_t hash = hash_func(word);
     if (hash >= hash_table->size) {
         hash = hash % hash_table->size;
@@ -35,7 +35,7 @@ int search(table_t* hash_table, char* word, hash_ptr hash_func) {
     size_t in = 0;
     for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
         if (in && strcmp(ind->data, word) == 0) {
-            flag = hash;
+            flag = (int)hash;
             break;
         }
         in++;
@@ -66,6 +66,7 @@ void table_destroy(table_t* hash_table) {
 
 
 size_t hash_zero(char* word) {
+    word++;
     return 0;
 }
 

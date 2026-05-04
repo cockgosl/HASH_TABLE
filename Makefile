@@ -1,5 +1,5 @@
 CC = g++
-FLAGS_C = -g -fsanitize=address -I include
+FLAGS_C = -g -I include
 FLAGS_G = -Tjpg
 
 INPUT = Dump_inf/g.gv
@@ -28,4 +28,4 @@ graph_plot:
 	mkdir -p images
 	gnuplot csv/plot.plt
 clean:
-	rm -f $(OBJ) $(TARGET) $(Dump_inf) $(IMAGES)
+	rm -f $(OBJ) $(TARGET) $(Dump_inf) 

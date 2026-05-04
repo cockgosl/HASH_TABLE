@@ -15,7 +15,10 @@ char* read_buffer(FILE* text, size_t* amount) {
 
     if (buffer) {
         buffer[size] = '\0';
-        fread (buffer, sizeof(char), size, text);
+        if (fread (buffer, sizeof(char), size, text) == 0) {
+            fprintf(stderr, "fread error\n");
+            abort();
+        }
     }
     else {
         printf ("memory cannot be allocated");

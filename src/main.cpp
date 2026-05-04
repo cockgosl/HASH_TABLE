@@ -11,7 +11,8 @@ int main() {
     table_init(&table, 2000);
     make_table(&table, buffer, amount, hash_word);
     table_dump(&table, data);
-    search(&table, "and", hash_word);
+    char* word = (char*)"and";
+    search(&table, word, hash_word);
     table_destroy(&table);
     free(buffer);
     return 0;
