@@ -8,7 +8,7 @@ void make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_
     for (size_t counter = 0; counter < number ; counter++) {
         size_t flag = 0;
         size_t hash = hash_func(pointer);
-        if (hash > hash_table->size) {
+        if (hash >= hash_table->size) {
             hash = hash % hash_table->size;
         }
         
