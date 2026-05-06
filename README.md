@@ -42,6 +42,7 @@
 
 
 **(||)**
+*(полная информация о каждом бенчмарке: [Папка с данными cache_grind](https://github.com/cockgosl/HASH_TABLE/tree/main/cache_grind))
 
 *(Benchmark-промах:)*
 <img src="./images/bench_miss.png" alt="miss" width="1000" height="500">
