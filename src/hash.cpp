@@ -118,6 +118,43 @@ size_t hash_word(char* word) {
     return sum;
 }
 
+size_t hash_xor(char* word) {
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+
+    char* bytes = word;
+    size_t length = strlen(word);
+    char hash = bytes[0];
+
+
+    for (size_t ind = 1; ind < length; ind++) {
+        hash ^= bytes[ind];
+    }
+
+    return (size_t)hash;
+}
+
+size_t hash_xor_reversed(char* word) {
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+
+    unsigned char* bytes = (unsigned char*)word;
+    size_t length = strlen(word);
+    unsigned char hash = (unsigned char)bytes[length - 1];
+
+
+    for (int ind = length - 1; ind > 0 ;) {
+        ind--;
+        hash ^= bytes[ind];
+    }
+
+    return (size_t)hash;
+}
+
 size_t crc32(char* word)
 {
     if (word == NULL) {
@@ -130,11 +167,11 @@ size_t crc32(char* word)
 
     size_t length = strlen(word);
 
-    for (size_t i = 0; i < length; ++i) {
+    for (size_t i = 0; i < length; i++) {
         crc ^= bytes[i];
 
-        for (int bit = 0; bit < 8; ++bit) {
-            if (crc & 1u) {
+        for (int bit = 0; bit < 8; bit++) {
+            if (crc & 1) {
                 crc = (crc >> 1) ^ 0xEDB88320u;
             } 
             else {

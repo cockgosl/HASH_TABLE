@@ -25,6 +25,7 @@ graph_dot:
 	mkdir -p Dump_inf
 	dot $(FLAGS_G) $(INPUT) > $(OUTPUT)
 graph_plot:
+	./bin/test
 	mkdir -p images
 	gnuplot csv/plot.plt
 benchmark:
