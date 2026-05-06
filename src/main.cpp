@@ -8,11 +8,13 @@ int main() {
     assert(data);
     char* buffer = read_buffer(fp, &amount);
     table_t table = {};
-    table_init(&table, 2000);
-    make_table(&table, buffer, amount, hash_word);
+    table_init(&table, 10000);
+    make_table(&table, buffer, amount, crc32);
     table_dump(&table, data);
-    char* word = (char*)"and";
-    search(&table, word, hash_word);
+    for (size_t ind = 0; ind < 1000000; ind++) {
+        char* word = (char*)"and";
+        search(&table, word, crc32);
+    }
     table_destroy(&table);
     free(buffer);
     return 0;

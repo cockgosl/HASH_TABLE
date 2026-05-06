@@ -117,3 +117,26 @@ size_t hash_word(char* word) {
     for (size_t ind = 0; ind < len; sum+=word[ind], ind++);
     return sum;
 }
+
+#include <stdint.h>
+#include <stddef.h>
+
+size_t crc32(char* word)
+{
+    uint8_t *bytes = (uint8_t*) word;
+    uint32_t crc = 0xFFFFFFFFu;
+
+    size_t length = strlen(word);
+    for (size_t i = 0; i < length; ++i) {
+        crc ^= bytes[i];
+
+        for (int bit = 0; bit < 8; ++bit) {
+            if (crc & 1u) {
+                crc = (crc >> 1) ^ 0xEDB88320u;
+            } else {
+                crc >>= 1;
+            }
+        }
+    }
+    return (size_t)(~crc);
+}

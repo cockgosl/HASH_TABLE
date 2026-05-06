@@ -61,7 +61,8 @@ error_t list_dump (list_t* list) {
         printf ("\n");
 
         for (node_t* ind = list->head; ind != NULL ; ind = ind->next) {
-            printf ("element[%p] : %s \n",(error_t*)ind, ind->data);
+            void* pointer = (void*)ind;
+            printf ("element[%p] : %s \n", pointer, ind->data);
         }
 
         printf ("\n");

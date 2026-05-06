@@ -45,3 +45,4 @@ int search(table_t* hash_table, char* word, hash_ptr hash_func);
 size_t hash_zero(char* word);
 size_t hash_first(char* word);
 size_t hash_word(char* word);
+size_t crc32(char* word);

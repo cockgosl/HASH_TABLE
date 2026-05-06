@@ -47,7 +47,6 @@ char* read_buffer(FILE* text, size_t* amount) {
             in++;
         }
     }
-
     *amount = number;
     
     return buffer;   
