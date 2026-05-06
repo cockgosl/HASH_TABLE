@@ -118,22 +118,26 @@ size_t hash_word(char* word) {
     return sum;
 }
 
-#include <stdint.h>
-#include <stddef.h>
-
 size_t crc32(char* word)
 {
-    uint8_t *bytes = (uint8_t*) word;
+    if (word == NULL) {
+        printf ("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+
+    char* bytes = word;
     uint32_t crc = 0xFFFFFFFFu;
 
     size_t length = strlen(word);
+
     for (size_t i = 0; i < length; ++i) {
         crc ^= bytes[i];
 
         for (int bit = 0; bit < 8; ++bit) {
             if (crc & 1u) {
                 crc = (crc >> 1) ^ 0xEDB88320u;
-            } else {
+            } 
+            else {
                 crc >>= 1;
             }
         }

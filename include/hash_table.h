@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <cstring>
+#include <stdint.h>
+#include <stddef.h>
 
 typedef char* type; 
 typedef size_t (*hash_ptr)(char*); 

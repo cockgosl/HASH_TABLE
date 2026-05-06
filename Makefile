@@ -27,5 +27,10 @@ graph_dot:
 graph_plot:
 	mkdir -p images
 	gnuplot csv/plot.plt
+benchmark:
+	make -B GLAGS_C="-02 -g -Wall -Wextra -Wpedantic -Wconversion -I include"
+	./bin/test
+	valgrind --tool=cachegrind --cache-sim=yes --branch-sim=yes --cachegrind-out-file=cache_grind/cg_new.out ./bin/test
+	cg_annotate --show-percs=yes --show=Ir,Dr,Dw --sort=Ir --threshold=0.1 cache_grind/cg_new.out > cache_grind/bench_new.txt
 clean:
 	rm -f $(OBJ) $(TARGET) $(Dump_inf) 
