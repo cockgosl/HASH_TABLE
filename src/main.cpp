@@ -2,18 +2,18 @@
 
 int main() {
     size_t amount = 0;
-    FILE* fp = fopen("txt/Pride_and_Prejustice.txt", "rb");
+    FILE* fp = fopen("txt/Game_of_thrones.txt", "rb");
     FILE* data = fopen("csv/data.csv", "wr");
     assert(fp);
     assert(data);
     char* buffer = read_buffer(fp, &amount);
     table_t table = {};
-    table_init(&table, 2000);
-    make_table(&table, buffer, amount, crc32);
+    table_init(&table, 1);
+    make_table(&table, buffer, amount, hash_zero);
     table_dump(&table, data);
     for (size_t ind = 0; ind < 1000000; ind++) {
         char* word = (char*)"and";
-        search(&table, word, crc32);
+        search(&table, word, hash_zero);
     }
     table_destroy(&table);
     free(buffer);
