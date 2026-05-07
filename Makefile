@@ -1,5 +1,5 @@
 CC = g++
-FLAGS_C = -g -I include
+FLAGS_C = -g -no-pie -I include
 FLAGS_G = -Tjpg
 
 INPUT = Dump_inf/g.gv
@@ -7,7 +7,7 @@ OUTPUT = Dump_inf/g.jpg
 
 SRC = src
 BUILD = build
-OBJ = build/list_func.o build/read_buffer.o build/hash.o build/main.o
+OBJ = build/list_func.o build/read_buffer.o build/hash.o build/main.o build/my_strcmp.o
 TARGET = bin/test
 
 Dump_inf = Dump_inf/g.gv Dump_inf/g.jpg Dump_inf/graph.png
@@ -16,6 +16,10 @@ IMAGES = images/graph.png
 $(TARGET) : $(OBJ)
 	mkdir -p bin/
 	$(CC) $(FLAGS_C) $(OBJ) -o $(TARGET)
+
+build/my_strcmp.o : src/my_strcmp.asm
+	mkdir -p build/
+	nasm -f elf64 src/my_strcmp.asm -o build/my_strcmp.o
 
 $(BUILD)/%.o : $(SRC)/%.cpp
 	mkdir -p build/

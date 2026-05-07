@@ -1,0 +1,321 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /usr/bin/cg_annotate --show-percs=yes --show=Ir,Dr,Dw --sort=Ir --threshold=0.1 cache_grind/cg_new.out
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         49152 B, 64 B, 12-way associative
+LL cache:         18874368 B, 64 B, 18-way associative
+Command:          ./bin/test
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw Bc Bcm Bi Bim
+Events shown:     Ir Dr Dw
+Event sort order: Ir
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir__________________ Dr__________________ Dw_________________ 
+
+414,771,219 (100.0%) 167,603,100 (100.0%) 37,789,701 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir________________________ Dr________________________ Dw_______________________  file:function
+
+< 377,854,661 (91.1%, 91.1%) 157,225,933 (93.8%, 93.8%) 35,228,624 (93.2%, 93.2%)  /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/hash.cpp:
+  308,382,586 (74.4%)        128,996,896 (77.0%)        22,161,640 (58.6%)           crc32(char*)
+   69,000,000 (16.6%)         28,000,000 (16.7%)        13,000,000 (34.4%)           search(table_t*, char*, unsigned long (*)(char*))
+
+<  14,080,720  (3.4%, 94.5%)   2,011,520  (1.2%, 95.0%)          0  (0.0%, 93.2%)  ./string/../sysdeps/x86_64/multiarch/strlen-avx2.S:__strlen_avx2
+
+<  11,000,063  (2.7%, 97.1%)   3,000,013  (1.8%, 96.8%)  2,000,017  (5.3%, 98.5%)  /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/main.cpp:main
+
+<   7,056,311  (1.7%, 98.8%)   4,042,171  (2.4%, 99.2%)         33  (0.0%, 98.5%)  ???:
+    7,056,299  (1.7%)          4,042,169  (2.4%)                30  (0.0%)           ???
+
+<   1,244,574  (0.3%, 99.1%)     277,709  (0.2%, 99.4%)    137,069  (0.4%, 98.9%)  ./malloc/./malloc/malloc.c:
+      544,074  (0.1%)             93,955  (0.1%)            50,903  (0.1%)           _int_malloc
+
+<     951,392  (0.2%, 99.4%)     494,516  (0.3%, 99.7%)      6,370  (0.0%, 98.9%)  /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/read_buffer.cpp:read_buffer(_IO_FILE*, unsigned long*)
+
+<     416,125  (0.1%, 99.5%)      94,450  (0.1%, 99.7%)     60,000  (0.2%, 99.1%)  ./stdio-common/./stdio-common/vfprintf-process-arg.c:__printf_buffer
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir________________________ Dr________________________ Dw_______________________  function:file
+
+> 308,382,586 (74.4%, 74.4%) 128,996,896 (77.0%, 77.0%) 22,161,640 (58.6%, 58.6%)  crc32(char*):/mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/hash.cpp
+
+>  69,000,000 (16.6%, 91.0%)  28,000,000 (16.7%, 93.7%) 13,000,000 (34.4%, 93.0%)  search(table_t*, char*, unsigned long (*)(char*)):/mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/hash.cpp
+
+>  14,080,720  (3.4%, 94.4%)   2,011,520  (1.2%, 94.9%)          0  (0.0%, 93.0%)  __strlen_avx2:./string/../sysdeps/x86_64/multiarch/strlen-avx2.S
+
+>  11,000,063  (2.7%, 97.0%)   3,000,013  (1.8%, 96.7%)  2,000,017  (5.3%, 98.3%)  main:/mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/main.cpp
+
+>   7,056,299  (1.7%, 98.7%)   4,042,169  (2.4%, 99.1%)         30  (0.0%, 98.3%)  ???:???
+
+>     951,392  (0.2%, 99.0%)     494,516  (0.3%, 99.4%)      6,370  (0.0%, 98.4%)  read_buffer(_IO_FILE*, unsigned long*):/mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/read_buffer.cpp
+
+>     806,125  (0.2%, 99.2%)     166,450  (0.1%, 99.5%)    136,000  (0.4%, 98.7%)  __printf_buffer:
+      416,125  (0.1%)             94,450  (0.1%)            60,000  (0.2%)           ./stdio-common/./stdio-common/vfprintf-process-arg.c
+
+>     544,074  (0.1%, 99.3%)      93,955  (0.1%, 99.5%)     50,903  (0.1%, 98.8%)  _int_malloc:./malloc/./malloc/malloc.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./malloc/./malloc/malloc.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./malloc/./malloc/malloc.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./stdio-common/./stdio-common/vfprintf-process-arg.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./stdio-common/./stdio-common/vfprintf-process-arg.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./string/../sysdeps/x86_64/multiarch/strlen-avx2.S
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./string/../sysdeps/x86_64/multiarch/strlen-avx2.S
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/hash.cpp
+--------------------------------------------------------------------------------
+Ir________________ Dr________________ Dw________________ 
+
+         .                  .                  .          #include <stdio.h>
+         .                  .                  .          #include "hash_table.h"
+         .                  .                  .          
+         8  (0.0%)          0                  5  (0.0%)  error_t make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func) {
+         4  (0.0%)          2  (0.0%)          0              if (hash_table == NULL || buffer == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+         2  (0.0%)          1  (0.0%)          1  (0.0%)      char* pointer = buffer;  
+         .                  .                  .          
+    23,033  (0.0%)     17,273  (0.0%)          1  (0.0%)      for (size_t counter = 0; counter < number ; counter++) {
+     5,757  (0.0%)          0              5,757  (0.0%)          size_t flag = 0;
+    28,785  (0.0%)     11,514  (0.0%)     11,514  (0.0%)          size_t hash = hash_func(pointer);
+    23,028  (0.0%)     17,271  (0.0%)          0                  if (hash >= hash_table->size) {
+    31,410  (0.0%)     15,705  (0.0%)      5,235  (0.0%)              hash = hash % hash_table->size;
+         .                  .                  .                  }
+         .                  .                  .                  
+   100,905  (0.0%)     54,786  (0.0%)     14,424  (0.0%)          for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
+   104,160  (0.0%)     45,319  (0.0%)      6,761  (0.0%)              if (ind->data && strcmp(pointer, ind->data) == 0) {
+     3,851  (0.0%)          0              3,851  (0.0%)                  flag = 1;
+     3,851  (0.0%)          0                  0                          break;
+         .                  .                  .                      }
+         .                  .                  .                  }
+    11,514  (0.0%)      5,757  (0.0%)          0                  if (flag == 0) { 
+    17,154  (0.0%)      7,624  (0.0%)      1,906  (0.0%)              list_insert(&(hash_table->table[hash]), pointer);
+         .                  .                  .                  }
+    34,542  (0.0%)      5,757  (0.0%)     11,514  (0.0%)          pointer = strchr (pointer, '\0') + 1;
+         .                  .                  .              }
+         1  (0.0%)          0                  0              return CORRECT;
+         2  (0.0%)          2  (0.0%)          0          }
+         .                  .                  .          
+ 7,000,000  (1.7%)          0          4,000,000 (10.6%)  int search(table_t* hash_table, char* word, hash_ptr hash_func) {
+ 4,000,000  (1.0%)  2,000,000  (1.2%)          0              if (hash_table == NULL || word == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+ 1,000,000  (0.2%)          0          1,000,000  (2.6%)      int flag = -1;
+ 5,000,000  (1.2%)  2,000,000  (1.2%)  2,000,000  (5.3%)      size_t hash = hash_func(word);
+ 4,000,000  (1.0%)  3,000,000  (1.8%)          0              if (hash >= hash_table->size) {
+ 6,000,000  (1.4%)  3,000,000  (1.8%)  1,000,000  (2.6%)          hash = hash % hash_table->size;
+         .                  .                  .              }
+ 1,000,000  (0.2%)          0          1,000,000  (2.6%)      size_t in = 0;
+15,000,000  (3.6%)  8,000,000  (4.8%)  2,000,000  (5.3%)      for (node_t* ind = hash_table->table[hash].head; ind != NULL; ind = ind->next) {
+19,000,000  (4.6%)  5,000,000  (3.0%)  1,000,000  (2.6%)          if (in && my_strcmp(ind->data, word) == 0) {
+ 2,000,000  (0.5%)  1,000,000  (0.6%)  1,000,000  (2.6%)              flag = (int)hash;
+ 1,000,000  (0.2%)          0                  0                      break;
+         .                  .                  .                  }
+ 1,000,000  (0.2%)  1,000,000  (0.6%)          0                  in++;
+         .                  .                  .              }
+ 1,000,000  (0.2%)  1,000,000  (0.6%)          0              return flag;
+ 2,000,000  (0.5%)  2,000,000  (1.2%)          0          }
+         .                  .                  .          
+         6  (0.0%)          0                  3  (0.0%)  error_t table_dump(table_t* hash_table, FILE* output) {
+         4  (0.0%)          2  (0.0%)          0              if (hash_table == NULL || output == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+    10,006  (0.0%)      8,003  (0.0%)          1  (0.0%)      for (size_t ind = 0; ind < hash_table->size; ind++) {
+    24,000  (0.0%)     12,000  (0.0%)      2,000  (0.0%)          fprintf (output, "%ld %ld\n", ind, hash_table->table[ind].amount);
+         .                  .                  .              }
+         1  (0.0%)          0                  0              return CORRECT;
+         2  (0.0%)          2  (0.0%)          0          }
+         .                  .                  .          
+         6  (0.0%)          0                  3  (0.0%)  error_t table_init(table_t* table, size_t size) {
+         2  (0.0%)          1  (0.0%)          0              if (table == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+         7  (0.0%)          2  (0.0%)          2  (0.0%)      table->table = (list_t*)calloc (size, sizeof(list_t));
+         3  (0.0%)          2  (0.0%)          1  (0.0%)      table->size = size;
+    10,006  (0.0%)      8,003  (0.0%)          1  (0.0%)      for (size_t ind = 0; ind < table->size; ind++) {
+    16,000  (0.0%)      6,000  (0.0%)      2,000  (0.0%)          list_init(&(table->table[ind]), NULL);
+         .                  .                  .              }
+         1  (0.0%)          0                  0              return CORRECT;
+         2  (0.0%)          2  (0.0%)          0          }
+         .                  .                  .          
+         5  (0.0%)          0                  2  (0.0%)  error_t table_destroy(table_t* hash_table) {
+         2  (0.0%)          1  (0.0%)          0              if (hash_table == NULL ) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+         2  (0.0%)          1  (0.0%)          0              if (hash_table == 0) {
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+    10,006  (0.0%)      8,003  (0.0%)          1  (0.0%)      for (size_t ind = 0; ind < hash_table->size; ind++) {
+    14,000  (0.0%)      6,000  (0.0%)      2,000  (0.0%)          list_destroy(&(hash_table->table[ind]));
+         .                  .                  .              }
+         4  (0.0%)          2  (0.0%)          1  (0.0%)      free (hash_table->table);
+         1  (0.0%)          0                  0              return CORRECT;
+         2  (0.0%)          2  (0.0%)          0          }
+         .                  .                  .          
+         .                  .                  .          
+         .                  .                  .          size_t hash_zero(char* word) {
+         .                  .                  .              if (word == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+         .                  .                  .              word++;
+-- line 98 ----------------------------------------
+-- line 151 ----------------------------------------
+         .                  .                  .                  ind--;
+         .                  .                  .                  hash ^= bytes[ind];
+         .                  .                  .              }
+         .                  .                  .          
+         .                  .                  .              return (size_t)hash;
+         .                  .                  .          }
+         .                  .                  .          
+         .                  .                  .          size_t crc32(char* word)
+ 5,028,785  (1.2%)          0          2,011,514  (5.3%)  {
+ 2,011,514  (0.5%)  1,005,757  (0.6%)          0              if (word == NULL) {
+         .                  .                  .                  printf ("something is wrong with the given data\n");
+         .                  .                  .                  return INCORRECT;
+         .                  .                  .              }
+         .                  .                  .          
+ 2,011,514  (0.5%)  1,005,757  (0.6%)  1,005,757  (2.7%)      char* bytes = word;
+ 1,005,757  (0.2%)          0          1,005,757  (2.7%)      uint32_t crc = 0xFFFFFFFFu;
+         .                  .                  .          
+ 4,023,028  (1.0%)  1,005,757  (0.6%)  2,011,514  (5.3%)      size_t length = strlen(word);
+         .                  .                  .          
+17,123,869  (4.1%) 11,082,827  (6.6%)  1,005,757  (2.7%)      for (size_t i = 0; i < length; i++) {
+18,142,626  (4.4%) 12,095,084  (7.2%)          0                  crc ^= bytes[i];
+         .                  .                  .          
+84,665,588 (20.4%) 51,404,107 (30.7%)  3,023,771  (8.0%)          for (int bit = 0; bit < 8; bit++) {
+96,760,672 (23.3%) 24,190,168 (14.4%)          0                      if (crc & 1) {
+60,487,850 (14.6%) 12,097,570  (7.2%) 12,097,570 (32.0%)                  crc = (crc >> 1) ^ 0xEDB88320u;
+         .                  .                  .                      } 
+         .                  .                  .                      else {
+12,092,598  (2.9%) 12,092,598  (7.2%)          0                          crc >>= 1;
+         .                  .                  .                      }
+         .                  .                  .                  }
+         .                  .                  .              }
+ 3,017,271  (0.7%)  1,005,757  (0.6%)          0              return (size_t)(~crc);
+ 2,011,514  (0.5%)  2,011,514  (1.2%)          0          
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/main.cpp
+--------------------------------------------------------------------------------
+Ir______________ Dr______________ Dw______________ 
+
+        .                .                .         #include "hash_table.h"
+        .                .                .         
+        7 (0.0%)         1 (0.0%)         2 (0.0%)  int main() {
+        1 (0.0%)         0                1 (0.0%)      size_t amount = 0;
+        6 (0.0%)         0                2 (0.0%)      FILE* fp = fopen("txt/Pride_and_Prejustice.txt", "rb");
+        6 (0.0%)         0                2 (0.0%)      FILE* data = fopen("csv/data.csv", "wr");
+        2 (0.0%)         1 (0.0%)         0             assert(fp);
+        2 (0.0%)         1 (0.0%)         0             assert(data);
+        6 (0.0%)         1 (0.0%)         2 (0.0%)      char* buffer = read_buffer(fp, &amount);
+        2 (0.0%)         0                2 (0.0%)      table_t table = {};
+        4 (0.0%)         0                1 (0.0%)      table_init(&table, 2000);
+        6 (0.0%)         2 (0.0%)         1 (0.0%)      make_table(&table, buffer, amount, crc32);
+        5 (0.0%)         1 (0.0%)         1 (0.0%)      table_dump(&table, data);
+3,000,004 (0.7%) 2,000,001 (1.2%)         1 (0.0%)      for (size_t ind = 0; ind < 1000000; ind++) {
+2,000,000 (0.5%)         0        1,000,000 (2.6%)          char* word = (char*)"and";
+6,000,000 (1.4%) 1,000,000 (0.6%) 1,000,000 (2.6%)          search(&table, word, crc32);
+        .                .                .             }
+        3 (0.0%)         0                1 (0.0%)      table_destroy(&table);
+        3 (0.0%)         1 (0.0%)         1 (0.0%)      free(buffer);
+        1 (0.0%)         0                0             return 0;
+        5 (0.0%)         4 (0.0%)         0         
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /mnt/c/Users/User/OneDrive/Workspace/additional course/HASH_TABLE/src/read_buffer.cpp
+--------------------------------------------------------------------------------
+Ir____________ Dr____________ Dw__________ 
+
+      .              .            .         #include "hash_table.h"
+      .              .            .         
+      9 (0.0%)       1 (0.0%)     4 (0.0%)  char* read_buffer(FILE* text, size_t* amount) {
+      2 (0.0%)       1 (0.0%)     0             assert (text);
+     23 (0.0%)       0           18 (0.0%)      struct stat statistic = {};
+      .              .            .         
+      1 (0.0%)       0            1 (0.0%)      char* buffer = NULL;
+      4 (0.0%)       1 (0.0%)     2 (0.0%)      int descriptor = fileno(text); 
+      5 (0.0%)       1 (0.0%)     1 (0.0%)      fstat (descriptor, &statistic);    
+      .              .            .         
+      2 (0.0%)       1 (0.0%)     1 (0.0%)      size_t size = statistic.st_size;;
+      .              .            .         
+      6 (0.0%)       1 (0.0%)     2 (0.0%)      buffer = (char*) calloc(sizeof (char), size + 1);
+      2 (0.0%)       1 (0.0%)     0             assert(buffer);
+      .              .            .         
+      2 (0.0%)       1 (0.0%)     0             if (buffer) {
+      4 (0.0%)       2 (0.0%)     1 (0.0%)          buffer[size] = '\0';
+     10 (0.0%)       3 (0.0%)     1 (0.0%)          if (fread (buffer, sizeof(char), size, text) == 0) {
+      .              .            .                     fprintf(stderr, "fread error\n");
+      .              .            .                     abort();
+      .              .            .                 }
+      .              .            .             }
+      .              .            .             else {
+      .              .            .                 printf ("memory cannot be allocated");
+      .              .            .             }
+      .              .            .         
+      1 (0.0%)       0            1 (0.0%)      size_t number = 0;
+      .              .            .         
+ 34,550 (0.0%)  17,274 (0.0%)     1 (0.0%)      for (size_t in = 0; buffer[in] != '\0';) {
+ 96,720 (0.0%)  48,360 (0.0%)     0                 if (buffer[in] == '\n' || buffer[in] == ' ' || buffer[in] == '\r') {
+ 13,866 (0.0%)   6,933 (0.0%)     0                     while (buffer[in] == '\n' || buffer[in] == '\r' || buffer[in] == ' ') {
+  2,316 (0.0%)   1,158 (0.0%)   579 (0.0%)                  buffer[in] = '\0';
+    579 (0.0%)     579 (0.0%)     0                         in++;
+      .              .            .                     }
+  3,462 (0.0%)   1,731 (0.0%)     0                     if (buffer[in] == '\0') {
+      1 (0.0%)       0            0                         break;
+      .              .            .                     }
+      .              .            .                 }
+704,568 (0.2%) 351,996 (0.2%)     0                 while (buffer[in] != '\0' && buffer[in] != ' ' && buffer[in] != '\n' && buffer[in] != '\r') {
+ 26,166 (0.0%)  26,166 (0.0%)     0                     in++;
+      .              .            .                 }
+      .              .            .         
+  5,757 (0.0%)   5,757 (0.0%)     0                 number++;
+      .              .            .                 
+ 34,542 (0.0%)  17,271 (0.0%)     0                 if (buffer[in] != '\0') {
+ 23,028 (0.0%)  11,514 (0.0%) 5,757 (0.0%)              buffer[in] = '\0';
+  5,757 (0.0%)   5,757 (0.0%)     0                     in++;
+      .              .            .                 }
+      .              .            .             }
+      3 (0.0%)       2 (0.0%)     1 (0.0%)      *amount = number;
+      .              .            .             
+      1 (0.0%)       1 (0.0%)     0             return buffer;   
+      5 (0.0%)       4 (0.0%)     0         
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir_________________ Dr_________________ Dw________________ 
+
+389,806,116 (94.0%) 160,720,462 (95.9%) 37,235,011 (98.5%)    annotated: files known & above threshold & readable, line numbers known
+          0                   0                  0            annotated: files known & above threshold & readable, line numbers unknown
+          0                   0                  0          unannotated: files known & above threshold & two or more non-identical
+ 15,741,419  (3.8%)   2,383,679  (1.4%)    197,069  (0.5%)  unannotated: files known & above threshold & unreadable 
+  2,167,373  (0.5%)     456,788  (0.3%)    357,588  (0.9%)  unannotated: files known & below threshold
+  7,056,311  (1.7%)   4,042,171  (2.4%)         33  (0.0%)  unannotated: files unknown
+

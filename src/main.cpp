@@ -9,11 +9,11 @@ int main() {
     char* buffer = read_buffer(fp, &amount);
     table_t table = {};
     table_init(&table, 2000);
-    make_table(&table, buffer, amount, hash_xor_reversed);
+    make_table(&table, buffer, amount, crc32);
     table_dump(&table, data);
     for (size_t ind = 0; ind < 1000000; ind++) {
         char* word = (char*)"and";
-        search(&table, word, hash_xor_reversed);
+        search(&table, word, crc32);
     }
     table_destroy(&table);
     free(buffer);
