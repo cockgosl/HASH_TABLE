@@ -84,4 +84,4 @@
 
 ## Использование
 
-Реализация функций: [список](./src/hash.cpp), [таблица](./src/list_func.cpp), [буферизация](./src/read_buffer.cpp)
+Реализация функций: [буферизация](./src/read_buffer.cpp), [таблицы](./src/hash.cpp), [список](./src/list_func.cpp)
