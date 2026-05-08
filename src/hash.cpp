@@ -155,6 +155,53 @@ size_t hash_xor_reversed(char* word) {
     return (size_t)hash;
 }
 
+size_t hash_rol(char* word) {
+
+    if (word == NULL) {
+        printf("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+
+    size_t length = strlen(word);
+
+    if (length == 0) {
+        return 0;
+    }
+
+    uint32_t hash = 0;
+
+    for (size_t i = 0; i < length; ++i) {
+        hash = (hash << 1) | (hash >> 31);  // ROL на 1 бит
+        hash ^= (unsigned char)word[i];
+    }
+
+    return (size_t)hash;
+}
+
+size_t hash_ror(char* word) {
+
+    if (word == NULL) {
+        printf("something is wrong with the given data\n");
+        return INCORRECT;
+    }
+
+    size_t length = strlen(word);
+
+    if (length == 0) {
+        return 0;
+    }
+
+    uint32_t hash = 0;
+
+    for (size_t i = 0; i < length; ++i) {
+        hash = (hash >> 1) | (hash << 31);  // ROL на 1 бит
+        hash ^= (unsigned char)word[i];
+    }
+
+    return (size_t)hash;
+}
+
+
 size_t crc32(char* word)
 {
     if (word == NULL) {

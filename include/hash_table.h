@@ -49,6 +49,8 @@ size_t hash_first(char* word);
 size_t hash_word(char* word);
 size_t hash_xor(char* word);
 size_t hash_xor_reversed(char* word);
+size_t hash_rol(char* word);
+size_t hash_ror(char* word);
 size_t crc32(char* word);
 
 extern "C" int my_strcmp(char* word1, char* word2);
