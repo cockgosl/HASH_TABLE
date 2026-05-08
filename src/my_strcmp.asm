@@ -7,7 +7,7 @@ my_strcmp:
         movzx ebx, byte [rsi]
 
 .loop:
-        cmp eax, edx
+        cmp eax, ebx
         jne .diff
 
         test eax, eax
