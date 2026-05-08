@@ -9,11 +9,12 @@ int main() {
     char* buffer = read_buffer(fp, &amount);
     table_t table = {};
     table_init(&table, 10000);
-    make_table(&table, buffer, amount, hash_ror);
-    table_dump(&table, data);
+    make_table(&table, buffer, amount, crc32);
+    double measure = table_dump(&table, amount, data);
+    printf("%f\n", measure * 100);
     for (size_t ind = 0; ind < 1000000; ind++) {
         char* word = (char*)"and";
-        search(&table, word, hash_rol);
+        search(&table, word, hash_first);
     }
     table_destroy(&table);
     free(buffer);

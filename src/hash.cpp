@@ -50,15 +50,21 @@ int search(table_t* hash_table, char* word, hash_ptr hash_func) {
     return flag;
 }
 
-error_t table_dump(table_t* hash_table, FILE* output) {
+double table_dump(table_t* hash_table, size_t amount, FILE* output) {
     if (hash_table == NULL || output == NULL) {
         printf ("something is wrong with the given data\n");
         return INCORRECT;
     }
-    for (size_t ind = 0; ind < hash_table->size; ind++) {
-        fprintf (output, "%ld %ld\n", ind, hash_table->table[ind].amount);
+    double measure = 0;
+    size_t size = hash_table->size;
+    double average = (double)amount/(double)size; 
+    for (size_t ind = 0; ind < size; ind++) {
+        size_t amount_i = hash_table->table[ind].amount;
+        fprintf (output, "%zu %zu\n", ind, amount_i); 
+        double diff = (double)amount_i - average;
+        measure += (diff)*(diff)/double(size);
     }
-    return CORRECT;
+    return sqrt(measure)/average; //мера отклонения от полностью равномерного распределения
 }
 
 error_t table_init(table_t* table, size_t size) {
