@@ -57,17 +57,15 @@ double table_dump(table_t* hash_table, size_t amount, FILE* output) {
     }
     double measure = 0;
     size_t size = hash_table->size;
-    double average = (double)amount/(double)size; 
     for (size_t ind = 0; ind < size; ind++) {
         size_t amount_i = hash_table->table[ind].amount;
-        if (amount_i > 1) {
-            amount_i = 1;
+        if (amount_i >= 1) {
+            double diff = (double)amount_i - 1;
+            measure += (diff)*(diff)/double(size);
         }
         fprintf (output, "%zu %zu\n", ind, amount_i); 
-        double diff = (double)amount_i - average;
-        measure += (diff)*(diff)/double(size);
     }
-    return sqrt(measure)/average; //мера отклонения от полностью равномерного распределения
+    return sqrt(measure); //мера отклонения от полностью равномерного распределения
 }
 
 error_t table_init(table_t* table, size_t size) {
