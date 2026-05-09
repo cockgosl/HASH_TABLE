@@ -60,6 +60,9 @@ double table_dump(table_t* hash_table, size_t amount, FILE* output) {
     double average = (double)amount/(double)size; 
     for (size_t ind = 0; ind < size; ind++) {
         size_t amount_i = hash_table->table[ind].amount;
+        if (amount_i > 1) {
+            amount_i = 1;
+        }
         fprintf (output, "%zu %zu\n", ind, amount_i); 
         double diff = (double)amount_i - average;
         measure += (diff)*(diff)/double(size);
