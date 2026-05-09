@@ -25,9 +25,6 @@ $(BUILD)/%.o : $(SRC)/%.cpp
 	mkdir -p build/
 	$(CC) $(FLAGS_C) -c $< -o $@
 
-graph_dot:
-	mkdir -p Dump_inf
-	dot $(FLAGS_G) $(INPUT) > $(OUTPUT)
 graph_plot:
 	./bin/test
 	mkdir -p images
