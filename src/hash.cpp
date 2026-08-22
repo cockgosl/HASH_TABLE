@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "hash_table.h"
 
+//sdsa
+
 error_t make_table(table_t* hash_table, char* buffer, size_t number, hash_ptr hash_func) {
     if (hash_table == NULL || buffer == NULL) {
         printf ("something is wrong with the given data\n");
